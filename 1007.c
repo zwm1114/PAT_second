@@ -3,10 +3,10 @@
 int main(){
 	int n;
 	scanf("%d",&n);
-	int arr[500] = {0};
+	int arr[200] = {0};
 	int i,j;
 	int count = 0;
-	for(j=1;j<n;j++){
+	for(j=2;j<n;j++){
 		i = 2;
 		while(i < j){
 			if(j%i == 0){
@@ -15,22 +15,22 @@ int main(){
 			i++;
 		}
 	}
-	int p = n-1;
+	int p = 2;
 	int q ;
 
-	while(p>1){
+	while(p < n){
 		while(arr[p] == 1){
-			p--;
+			p++;
 		}
-		q = p -1;
+		q = p +1;
 		while(arr[q] == 1){
-			q--;
+			q++;
 		}
-		if(p-q == 2){
+		if(q-p == 2){
 			count ++;
 		}
 			p=q;
-			q=p-1;
+			q=p+1;
 	}	
 	
 	printf("%d",count);
