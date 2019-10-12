@@ -12,10 +12,7 @@ int main(){
 	} 
     //得出百位，十位，个位
     char s[100];
-    char c[9]={'1','2','3','4','5','6','7','8','9'};
-    int i = 0;
-    int j = 1;
-    int k = 0;
+    int i = 1;
     while(count > 0)
     {
     
@@ -24,34 +21,35 @@ int main(){
     	
     	case 100:
 			{
-    			while(i < num/count){
-				s[i++] = 'B';
+    			while(i <= num/count){
+				printf("B");
+				i++;
 			}
 			num=num%count;
-			count = count/10;	
+			count = count/10;
+			i=1;
 			};
 		case 10:
 			{
-				while(j <= num/count){
-				s[i++] = 'S';
-				j++;
+				while(i <= num/count){
+				printf("S");
+				i++;
 				}
 				num=num%count;
-				count = count/10;	
+				count = count/10;
+				i=1;	
 			};
 		case 1:
 			{
-				while(k < num/count){
-					s[i++] = c[k] ; 
-					k++;
+				while(i <= num/count){
+					printf("%d",i); 
+					i++;
 				}
 				count = count/10;
 				break;	
 			}
 		}
 	}
-	
-	printf("%s",s);
-	
+		
 	return 0;
 }
