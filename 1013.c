@@ -2,17 +2,18 @@
 #include <math.h>
 
 int main(){
-	int arr[10001] = {0};
 	int m,n;
 	int i;
 	int num = 3;
 	int count = 1;
+	int flag;
 	scanf("%d %d",&m,&n);
 	while(count <= n){
+		flag = 0;
 		i = 2;
 		while(i <= sqrt(num)){
 			if(num%i == 0){
-				arr[num] = 1;
+				flag = 1;
 			}
 			i++;
 		}
@@ -21,7 +22,7 @@ int main(){
 		}else if(n == 1){
 			printf("2");
 		} 
-		if(arr[num] == 0){
+		if(flag == 0){
 			count ++;
 			if(count >= m && count <= n){
 			printf("%d",num);
