@@ -58,7 +58,7 @@ int main(){
 		printf("%ld ",count1);
 	}
 	
-	if(result == 0){
+	if(count2 == 1){
 		printf("N ");
 	}else{
 		printf("%ld ",result);

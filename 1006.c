@@ -6,12 +6,12 @@ int main(){
 	num = n;
 	//求出n的位数
 	int count = 1;
-	while(n > 10){
+	while(n >= 10){
 		n = n/10;
 		count *= 10;
 	} 
     //得出百位，十位，个位
-    char s[100];
+    char s[100] = {};
     int i = 1;
     while(count > 0)
     {
