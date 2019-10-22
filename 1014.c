@@ -7,11 +7,8 @@ int main() {
 	char s3[60];
 	char s4[60];
 	int i = 0;
-	int j = 0;
-	int flag = 0;
 	int k;
 	int m = 0;
-	int n;
 	int q = 0;
 
 	scanf("%s",s1);
@@ -19,48 +16,25 @@ int main() {
 	scanf("%s",s3);
 	scanf("%s",s4);
 
-	/*找第一个相同的字母*/
+	/*找第一个相同的字母,范围：A-G*/
 	while(s1[i] != '\0'){
-		/*如果是大写字母则进入循环*/
-		if(s1[i] <= 'Z' && s1[i] >= 'A'){
-			j = i;
-			if(s2[j] == s1[i] && s2[j] <= 'Z' && s2[j] >= 'A'){
-				flag = 1;
-				break;
-			}
-		}
-		if(flag == 1){
-			break;
+		if(s1[i] == s2[i] && s1[i] <= 'G' && s1[i] >= 'A' ){
+			break; 
 		}
 		i++;
 	}
 	k = i;
 	i++;
-	/*找第二个相同的大写字母*/
+	/*找第二个相同的字符，范围：A-N,0-9*/
 	while(s1[i] != '\0'){
-		if(s1[i] <= 'Z' && s1[i] >= 'A'){
-			j=i;
-			if(s2[j] == s2[i] && s2[j] <= 'Z' && s2[j] >= 'A'){
-				flag = 0;
-				break;
-			}
-		}		
-		if(flag == 0){
+		if(s1[i] == s2[i] && ((s1[i] <= 'N' && s1[i] >= 'A')||(s1[i] <= '9' && s1[i] >= '0'))){
 			break;
 		}
 		i++;
 	}
-	/*找出第一对相同的英文字母的位置*/
+	/*找出第一对相同的字符，范围：a-z,A-Z*/
 	while(s3[m] != '\0'){
-		if((s3[m] >= 'a' && s3[m] <= 'z')|| (s3[m] >= 'A' && s3[m] <= 'Z')){
-			n=m;
-			if(s4[n] == s3[m]){
-				flag = 1;
-				break;
-			}
-		}
-		
-		if(flag == 1){
+		if(s4[m] == s3[m] && ((s3[m] >= 'a' && s3[m] <= 'z')|| (s3[m] >= 'A' && s3[m] <= 'Z'))){
 			break;
 		}
 		m++;
@@ -75,10 +49,10 @@ int main() {
 		case 'F': printf("SAT ");break;
 		case 'G': printf("SUN ");break;
 	}
-	while(HOUR[q] != s2[j]){
+	while(HOUR[q] != s2[i]){
 		q++;
 	}
-	printf("%d:", q);
+	printf("%02d:", q);
 	printf("%02d", m);
 	return 0;
 
