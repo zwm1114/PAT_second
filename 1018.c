@@ -22,7 +22,7 @@ int main(){
 	int b_b = 0;
 	int total;
 
-	scanf("%d",&n);
+	scanf("%d\n",&n);
 	total = n;
 
 	while(n--){
@@ -47,23 +47,45 @@ int main(){
 				case 'B': peace++;break;
 			}
 		}
+		getchar(); 
 	}
 
-	printf("%d %d %d\n",count_a,peace,total-count_a);
-	printf("%d %d %d\n",total-count_a,peace,count_a);
+	printf("%d %d %d\n",count_a,peace,total-count_a-peace);
+	printf("%d %d %d\n",total-count_a-peace,peace,count_a);
+	
 
 	if(max(c_a,max(j_a,b_a)) == c_a){
-		printf("C ");
+		if(b_a == c_a){
+			printf("B ");
+		}else{
+			printf("C ");	
+		}		
 	}else if(max(c_a,max(j_a,b_a)) == j_a){
-		printf("J ");
+		if(j_a == b_a){
+			printf("B ");
+		}else if(j_a == c_a){
+			printf("C ");
+		}else{
+			printf("J ");	
+		}
 	}else{
 		printf("B ");
 	}
 
-	if(max(c_a,max(j_a,b_a)) == c_b){
-		printf("C");
-	}else if(max(c_a,max(j_a,b_a)) == j_b){
-		printf("J");
+	if(max(c_b,max(j_b,b_b)) == c_b){
+		if(c_b == b_b){
+			printf("B");
+		}else{
+			printf("C");	
+		}
+	}else if(max(c_b,max(j_b,b_b)) == j_b){
+		if(j_b == b_b){
+			printf("B");
+		}else if(j_b == c_b){
+			printf("C");
+		}else{
+			printf("J");	
+		}
 	}else{
 		printf("B");
 	}
