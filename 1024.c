@@ -44,6 +44,9 @@ int main(){
 		while(i < n){
 			if(s[i] != '.'){
 				printf("%c",s[i]);
+				if(a == 0 && i+1 != n){
+					printf(".");
+				}				
 				a --;	
 				if(a == -1){
 					printf(".");
