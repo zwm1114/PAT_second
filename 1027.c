@@ -10,11 +10,18 @@ int main(){
 
 	for(j=1;2*sum <= n;j=j+2){
 		i = j;
+		sum = 0;
 		while(i > 0){
 			sum += i;
 			i = i -2;
 		}
 	}
+	
+	if(2*sum>n){
+		j = j -2;
+	}
+	
+	
 
 	printf("%d\n",j);
 
