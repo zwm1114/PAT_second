@@ -42,9 +42,12 @@ int main(){
 	if(s[n] == '+'){
 		n = n - 1;
 		while(i < n){
-			if(s[i] != '.' || a < 0){
+			if(s[i] != '.'){
 				printf("%c",s[i]);
 				a --;	
+				if(a == -1){
+					printf(".");
+				} 				
 			}			
 			i++;
 		}
