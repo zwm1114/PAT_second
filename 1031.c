@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
-const int weight [18] = {7，9，10，5，8，4，2，1，6，3，7，9，10，5，8，4，2};
-const int check [18] = {1, 0, X, 9, 8, 7, 6, 5, 4, 3, 2};
+const int weight [18] = {7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2};
+const char check [18] = {'1','0','X','9','8','7','6','5','4','3','2'};
 
 struct id
 {
@@ -11,46 +11,55 @@ struct id
 };
 
 int main(){
-	int n;
-	int a,i;
+	int n,i;
+	int a;
 	int j = 0;
 	char lastNum;
 	int sum = 0;
 	struct id id[100];
 	int count = 0;
+	char temp[20]={0};
 	scanf("%d",&n);
+	getchar();
 	while(j < n){
 		id[j].isValid = 1;
+		sum = 0;
 		for(i = 0;i < 17;i ++){
 			a = getchar();
-			if(a.isdigit()){
-				id[j].num[i] = a;
-				sum += weight[i] * a;
-			}else{
+			if(a < '0' || a > '9'){
 				id[j].isValid = 0;
 				count ++;
-				break;
 			}
+			id[j].num[i] = a - '0';
+			sum += weight[i] * id[j].num[i];			
 		}
+		
 		lastNum = getchar();
-		while(weight[i] != sum%11){
-			i ++;
-		}
-		if(check[i] != lastNum){
+		if(check[sum%11] != lastNum){
 			id[j].isValid = 0;
 		}
+		id[j].lastNum = lastNum;	
+	
 		getchar();
+		j++;
 	}
 
-	printf("%d\n",n-count);
-
-	for(j = 0; j < n;j ++){
-		if(id[j].isValid){
+	if(count != 0){
+		for(j = 0; j < n;j ++){
+		if(!id[j].isValid){
 			for(i = 0;i < 17;i ++){
-				printf("%d",id[j].num[i]);
+				if((id[j].num[i] + '0') < '0' || (id[j].num[i] + '0') > '9'){
+					printf("%c",id[j].num[i]+'0');
+				}else{
+					printf("%d",id[j].num[i]);	
+				}
 			}
-			putchar(id[j].lastNum);
+			printf("%c\n",id[j].lastNum);
 		}
+		}	
+	}else{
+		printf("All passed");
 	}
+
 	return 0;
 }
