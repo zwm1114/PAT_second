@@ -3,12 +3,13 @@
 
 
 int main(){
-	char s[70];
+	char s[100];
+	int available[100001];
 	int i = 0;
 	int j = 0;
 	int shift = 1;
-	int isAvailable;
 	char a; 
+	int ifPrint = 0;
 	scanf("%s",s);
 
 	while(s[i] != '\0'){
@@ -20,17 +21,26 @@ int main(){
 	getchar();
 	while((a = getchar()) != '\n'){
 		j = 0;
-		isAvailable = 1;
 		while(j < i){
-			if(a == s[j]||(isalpha(a) && (tolower(a) == s[j] || toupper(a) == s[j]))){
-				isAvailable = 0;
+			if(available[a] == 1){
+				break;
+			}else if(a == s[j]||(isalpha(a) && toupper(a) == s[j])){
+				available[a] = 1;
 				break;
 			}
 			j++;
 		}
-		if(isAvailable && !iswupper(a) && !shift){
+		if(shift && !available[a]){
 			putchar(a);
+			ifPrint = 1; 
+		}else if(!shift && !isupper(a) && !available[a]){
+			putchar(a);
+			ifPrint = 1;
 		}
+	}
+	
+	if(!ifPrint){
+		printf("\n");
 	}
 	return 0;
 }
