@@ -49,7 +49,11 @@ int main(){
 	int a,b,c,d;
 	int des,asc;
 	scanf("%d",&num);
-
+	
+	if(num == 6174){
+		printf("7641 - 1467 = 6174\n");
+	}
+	
 	while(num != 6174 && num != 0){
 	/*求出各位数字*/
 		a = num/1000;
