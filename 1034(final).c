@@ -15,16 +15,16 @@ int main()
 	
 	for(i = 0;i < 4;i ++){
 		formatPrint(a1,b1);
-		printf("%c",options[i]);
+		printf(" %c ",options[i]);
 		formatPrint(a2,b2);
-		printf("=");
+		printf(" = ");
 		if(options[i] == '+'){
 			formatPrint(a1 * b2 + a2 * b1,b1 * b2);
 		}else if(options[i] == '-'){
 			formatPrint(a1 * b2 - a2 * b1,b1 * b2);
 		}else if(options[i] == '*'){
 			formatPrint(a1 * a2,b1 * b2);
-		}else{
+		}else if(options[i] == '/'){
 			formatPrint(a1 * b2, a2 * b1);
 		}
 		printf("\n");
@@ -38,13 +38,9 @@ long get(long a, long b){
 }
 
 void formatPrint(long a,long b){
-	long dem = get(a,b);
+	
 	if(b == 0){
-		printf("INF");
-		return;
-	}
-	if(a == 0){
-		printf(" 0 ");
+		printf("Inf");
 		return;
 	}
 	int isNavigate = 0;
@@ -56,10 +52,23 @@ void formatPrint(long a,long b){
 		b = -b;
 		isNavigate = !isNavigate;
 	}
+	
+	long dem = get(a,b);
+	a /= dem;
+	b /= dem;
+	
 	if(isNavigate){
 		printf("(-");
 	}
-	printf("%ld/%ld",a/dem,b/dem);
+		
+	if(a/b && a%b){
+		printf("%ld %ld/%ld",a/b,a%b,b);
+	}else if(a%b){
+		printf("%ld/%ld",a%b,b);
+	}else{
+		printf("%ld",a/b);
+	}
+		
 	if(isNavigate){
 		printf(")");
 	}
