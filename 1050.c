@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 int cmp(int,int);
-int * put(int *,int *,int,int);
+void formatPut(int *,int *,int,int,int);
 
 int main(){
 	int N;
@@ -34,7 +34,7 @@ int main(){
 	}
 
 	int arr [m] [n];
-	put(arr,num,m,n);
+	put(arr,num,N,m,n);
 	
 	return 0;
 }
@@ -43,24 +43,26 @@ int cmp(int a,int b){
 	return b - a;
 }
 
-int * put(int * arr,int *num,int m,int n){
+void formatPut(int arr[][],int *num,int N,int m,int n){
 	int i = 0;
-	if( m == n){
-		return 
-	}
-	if(i % 2){
-		while(i < n){
-			arr[m][i] = num[j];
-			i ++;
+	int j = 0;
+	int k = 0;
+	while(i < N){
+		//left to right
+		while(k < (n - 1)){
+			arr[0][k ++] = num[i ++]; 
 		}
-	}else{
-		while(j < m){
-			arr[j] [n] = num[j];
-			j ++;
+		//top to bottom
+		while(j < (m - 1)){
+			arr[j ++][k] = num[i ++];
+		}
+		//right to left
+		while(k > 0){
+			arr[j][k --] = num[i ++];
+		}
+		//bottom to top
+		while(j > 0){
+			arr[j --][k] = num[i ++];
 		}
 	}
-	
-
-
-
 }
