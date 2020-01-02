@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 int cmp(int,int);
-void formatPut(int *,int *,int,int,int);
+void formatPut(int **,int *,int,int,int);
 
 int main(){
 	int N;
@@ -43,7 +43,7 @@ int cmp(int a,int b){
 	return b - a;
 }
 
-void formatPut(int arr[][],int *num,int N,int m,int n){
+void formatPut(int **arr,int *num,int N,int m,int n){
 	int i = 0;
 	int j = 0;
 	int k = 0;
