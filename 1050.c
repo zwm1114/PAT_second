@@ -4,13 +4,13 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
-int cmp(int,int);
-void formatPut(int **,int *,int,int,int);
+int cmp(const void *,const void *);
+void formatPut(int * [],int *,int,int,int);
 
 int main(){
 	int N;
 	int tm,tn;
-	int i;
+	int i,j;
 	scanf("%d",&N);
 	int num[N];
 	for(i = 0; i < N; i ++){
@@ -34,16 +34,23 @@ int main(){
 	}
 
 	int arr [m] [n];
-	put(arr,num,N,m,n);
+	formatPut(arr,num,N,m,n);
+	
+	//print
+	for(i = 0;i < m;i ++){
+		for(j = 0;j < n;j ++){
+			printf("%d ",arr[i][j]);
+		}
+	}
 	
 	return 0;
 }
 
-int cmp(int a,int b){
-	return b - a;
+int cmp(const void *a,const void *b){
+	return *(int *)b - *(int *)a;
 }
 
-void formatPut(int **arr,int *num,int N,int m,int n){
+void formatPut(int *arr[],int *num,int N,int m,int n){
 	int i = 0;
 	int j = 0;
 	int k = 0;

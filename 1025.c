@@ -32,13 +32,22 @@ int main(){
 		if(strcmp(list[i].address,add) == 0){
 			head = &list[i];
 		}
+
+		
 		for (j = 0; j < N; j ++)
 		{
+
 			if(strcmp(list[j].address,list[i].next) == 0){
 				list[i].nPoint = &list[j];
 				list[j].pPoint = &list[i];
+				//invalid datas
+				if(strcmp(list[i].next,"-1") == 0){
+					N = i + 1;
+					break;
+				}
 				break;
 			}
+
 		}
 	}
 	i = 0;
