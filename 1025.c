@@ -36,18 +36,22 @@ int main(){
 		
 		for (j = 0; j < N; j ++)
 		{
-
 			if(strcmp(list[j].address,list[i].next) == 0){
 				list[i].nPoint = &list[j];
 				list[j].pPoint = &list[i];
-				//invalid datas
-				if(strcmp(list[i].next,"-1") == 0){
-					N = i + 1;
-					break;
-				}
+				
 				break;
-			}
-
+			}	
+		}
+		
+		if(j == N){
+			j --;	
+		}
+		
+		//invalid datas
+		if(strcmp(list[j].next,"-1") == 0){
+			N = i + 2;
+//			break;
 		}
 	}
 	i = 0;
@@ -70,8 +74,8 @@ int main(){
 	if(N%K){
 		i = N%K;
 		while(i--){
-			head = head->nPoint;
 			printf("%s %d %s\n",head->address,head->data,head->next);
+			head = head->nPoint;
 		}		
 	}
 	
